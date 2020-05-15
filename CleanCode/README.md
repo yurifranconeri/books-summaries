@@ -48,12 +48,12 @@ Nome tem que ser capaz de pronunciar, não pareça um idiota tentando falar pala
 
 **Não use comentários, use nomes:**
 
-Errado:
+**Errado:**
 ```
 int d;//elapsed time in days
 ```
 
-Certo:
+**Certo:**
 ```
 int elapsedTiemInDays;
 ```
@@ -68,14 +68,14 @@ Esqueça o **Impl**, não use o **I** não use o **_**
 O Impl pode receber o nome **especializado** e o I na frente do nome pouco importa o **tipo** que a entidade é para o **nome** que recebe 
 
 
-Errado:
+**Errado:**
 ```
 _transaction
 ITransactionRepository
 TransactionRepositoryImpl
 ```
 
-Certo:
+**Certo:**
 ```
 transactionToProcess
 TransactionRepository
