@@ -47,11 +47,14 @@ Nome tem que ser capaz de pronunciar, não pareça um idiota tentando falar pala
 
 
 **Não use comentários, use nomes:**
-```
+
 Errado:
+```
 int d;//elapsed time in days
+```
 
 Certo:
+```
 int elapsedTiemInDays;
 ```
 
@@ -64,35 +67,36 @@ Esqueça o **Impl**, não use o **I** não use o **_**
 
 O Impl pode receber o nome **especializado** e o I na frente do nome pouco importa o **tipo** que a entidade é para o **nome** que recebe 
 
-```
+
 Errado:
+```
 _transaction
 ITransactionRepository
 TransactionRepositoryImpl
+```
 
 Certo:
+```
 transactionToProcess
 TransactionRepository
 TransactionRepositoryCosmosDB ou TransactionCosmosDBRepository
 TransactionRepositoryMySQL
 TransactionRepositoryDynamoDB
-
-
 ```
 
-**Faça seu código ser legível e ter padrão:** 
+**Faça seu código ser legível e ter padrão:**
 
-	- Coloque o get, set e is
-	- Verbo para método
-	- Substantivo para classe
-	- Adjetivo para enum
-	- Classes especializadas tem o nome especializado
-	- Se a classe é abstrata o nome também deve ser
-	- Não use constantes sendo o próprio nome, de nome inteligente para elas
+- Coloque o get, set e is
+- Verbo para método
+- Substantivo para classe
+- Adjetivo para enum
+- Classes especializadas tem o nome especializado
+- Se a classe é abstrata o nome também deve ser
+- Não use constantes sendo o próprio nome, de nome inteligente para elas
 
+
+**Certo:**
 ```
-Certo:
-
 getAge
 setAge
 isAdultAge
@@ -101,8 +105,10 @@ Food (Classe Abstrata)
 Coffee (Classe)
 CoffeeSpecialty (Classe Especializada)
 CoffeeTraditional (Classe Especializada)
+```
 
-Troque:
+**Errado:**
+```
 ageValueInt -> getAge
 changeAgeValue -> setAge
 ageBellowThan -> isAgeBelowThan
@@ -118,13 +124,16 @@ FoodCoffeeSpecial (Classe) Food -> Coffee -> CoffeeSpecialty
 
 > Nomes curtos para classes públicas nomes longos para classes privadas 
 
+
+**Variável:**
 ```
-Variável:
 public const String LOG_MESSAGE_SUCCESS_READ_DATABASE =....
 
-private String CoffeeName = ....
+private String coffeeName = ....
+```
 
-Função:
+**Função:**
+```
 public String toString() {
 ...
 } 
@@ -194,8 +203,9 @@ Fuja dos **efeitos colaterais** (side effects), **faça o que o nome diz** e som
 
 **Try/catch** deve fazer somente isso, ele nasceu para isso, **extrair o resto** em um outro metodo
 
+
+**Certo:**
 ```
-Certo:
 try { 
 	addNewCoffeeItem(coffee);
 }
@@ -206,14 +216,13 @@ catch (CoffeeNotAddedException ex) {
 private void addCoffeeItem(Coffee coffee) {
 	...
 } 
-
 ```
 
 **Peça não pergunte (Tell don't ask)**, não recupere objetos ou propriedades para que você atue com eles não é sua responsabilidade, peça que algo seja feito.
 
-```
-Errado:
 
+**Errado:**
+```
 CellPhone c = new CellPhone();
 Boolean hasCamera = c.isCellPhoneWithCamera();
 
@@ -226,13 +235,12 @@ c.turnOnCamera();
 if(c.isCameraTurnedOn()) {
 	c.takePhoto();
 }
+```
 
-
-Certo:
-
+**Certo:**
+```
 CellPhone c = new CellPhone();
 c.takePhoto();
-
 ````
 > Toda responsabilidade de saber ligar a câmera tratar erros, retentativas, validações e etc devem ser da classe responsável e de suas especializações não de quem a utiliza
 
