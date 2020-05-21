@@ -249,5 +249,56 @@ c.takePhoto();
 
 **Não se repita** (DRI, don't repeat yourself) essa regra é fácil se está usando **CTRL + C e CTRL** + V algo de errado **não está certo**! Está ferindo algum ou muitos princípios, não possua métodos ou classes que fazem as mesmas coisas e coisas muito parecidas!
 
- 
+## <a id="comentarios"/> Comentários
 
+ Comentários devem ser **coisas raras** em seu código, **seu comentário, é o próprio código!**
+
+Comentários indicam que você **falhou em expressar sua intenção** no código, todo comentário é uma **falha normalmente de nomenclatura** de variáveis, de métodos, até mesmo por não **extrair seus métodos** para terem apenas uma responsabilidade
+
+**Errado:**
+```
+//Método que verifica se um café já existe, cria se não existe e retorna true, se existe atualiza e returna false, se não existe returna null
+public static Boolean create(Coffee coffee){
+
+}
+```
+
+**Certo:**
+```
+...
+try {
+	createOrUpdate(coffee);
+} catch (CoffeeNotExists ex) {
+	...
+}
+
+public static void createOrUpdate(Coffee coffee) {
+
+}
+```
+
+Se necessário, e somente assim, **aceite a falha e escreva um comentário** que deixe sua intenção clara para qualquer pessoa, normalmente utilizamos para:
+
+- Explicar uma regular expressions
+- Explicar um comando sql
+- Explicar uma fórmula matemática complicada
+- Documentar uma api publica
+- Copyright
+
+```
+//Regex - CPF e CNPJ com caracteres ".", "-" e "/" opcionais
+([0-9]{2}[\.]?[0-9]{3}[\.]?[0-9]{3}[\/]?[0-9]{4}[-]?[0-9]{2})|([0-9]{3}[\.]?[0-9]{3}[\.]?[0-9]{3}[-]?[0-9]{2})
+
+//Retorna todos os clientes e possíveis pedidos
+SELECT Customers.CustomerName, Orders.OrderID
+FROM Customers
+LEFT JOIN Orders ON Customers.CustomerID = Orders.CustomerID
+ORDER BY Customers.CustomerName;
+
+```
+
+**Comentários mentem!** Não por mal, mas escrevemos os comentários na primeira versão do código e depois que refatoramos, ou atualizamos nem sempre atualizamos os comentários e o que acontece quando alguém lê depois de alguns meses, eles mentem!
+
+Comentários precisam ser **bem posicionados**, se existe um comentário sobre um método em outro lugar sem ser **exatamente acima** dele a chance de ele ser esquecido é muito grande
+
+**Comentários //TODO** servem por um propósito de revisão de código ou de uma tarefa que será realizada em um curto período de tempo, você, como um bom profissional **nunca deveria submeter código com um TODO**
