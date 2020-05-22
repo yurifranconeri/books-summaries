@@ -4,7 +4,7 @@
 - [Nomes com Significado](#nomesignificado)
 - [Funções](#funcoes)
 - [Comentários](#comentarios)
-- [Formato](#formato)
+- [Formatação](#formatacao)
 - [Objetos e Estrutura de Dados](#objetosestrutura)
 - [Tratamento de Erro](#tratamentoerro)
 - [Teste Unitário](#testeunitario)
@@ -302,3 +302,35 @@ ORDER BY Customers.CustomerName;
 Comentários precisam ser **bem posicionados**, se existe um comentário sobre um método em outro lugar sem ser **exatamente acima** dele a chance de ele ser esquecido é muito grande
 
 **Comentários //TODO** servem por um propósito de revisão de código ou de uma tarefa que será realizada em um curto período de tempo, você, como um bom profissional **nunca deveria submeter código com um TODO**
+
+## <a id="formatacao"/>Formatação
+
+**Todos** no time devem seguir a mesma formatação, não importa se concorda ou não depois de estabelecido pelo time **siga a formatação!**
+
+O código **tem que** possuir uma **organização percetível** e não parecer que foi escrito por um conjunto de bêbados ou por pessoas e sim por um time
+
+Crie as regras do time, em 10 minutos definam a formatação, convenção de nomes e etc
+
+Ter uma **ferramenta** para **automátizar a formatação** é a maneira mais efetiva!
+
+Criar padrões de **organização de classe**
+
+Manter uma **organização clara** de package, namespaces, imports, variáveis, métodos públicos e privados. Ou seja, tudo deve ser padronizado!
+
+**O mais importante no começo** é uma regra que diz que as coisas mais importantes em uma classe ou função devem estar nas primeiras linhas!
+
+**Funções dependentes** uma próxima da outra! 
+
+Se esforce para **não ultrapassar 100 linhas por arquivo ou 120 caracteres por linha** 
+
+Ou seja, nunca use o scroll para a direita, se é necessário utilizá-lo você está escrevendo mal!
+
+Sempre **coloque espaços e linhas em branco** para tornar o programa **mais legível**, lembre-se o programa é escrito para que humanos possam ler e não máquinas!
+
+Fazer seu **código legível é mais importante do que do que código que funciona**
+
+Tente **evitar get e set**, use **peça não pergunte (tell don't ask)**, aumenta a coesão do seu programa.
+
+- **Não confunda classe com estrutura de dados**:
+	- Estrutura de dados tem variáveis públicas mas sem funções de negócio
+	- Classes tem variáveis privadas e métodos públicos 
