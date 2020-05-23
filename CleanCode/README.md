@@ -1,4 +1,4 @@
-# Clean Code
+# <a id="summary">Clean Code</a>
 
 - [O Código Limpo](#codigolimpo)
 - [Nomes com Significado](#nomesignificado)
@@ -13,7 +13,7 @@
 - [Sistemas](#sistemas)
 - [Conceitos Finais](#conceitos)
 
-## <a id="codigolimpo"/> O Código Limpo
+## <a id="codigolimpo"> O Código Limpo</a>
 
 Se o seu código **não** está limpo, o problema é **seu** e provavelmente o problema é **você**! 
 
@@ -32,7 +32,10 @@ Crie seu **senso de código**, que é saber o que é código bom e ruim e tenha 
 
 Você passa **10** vezes mais tempo **lendo código** do que escrevendo então escreva bem, mesmo que seja difícil, pense e demore o tempo necessário para escrevê-lo, assim **poderá ler mais rápido**
 
-## <a id="nomesignificado" />Nomes com Significado
+###### <a href="#summary">voltar sumário</a>
+
+## <a id="nomesignificado">Nomes com Significado</a> 
+
 Tudo é nomeado, classe, métodos, parâmetros, projetos, arquivos e diretórios então **faça isso direito!**
 
 Qualquer **idiota** pode escrever código que **máquinas** entendem, um **profissional** escreve código que outras **pessoas** entendem.
@@ -143,8 +146,8 @@ private boolean isCoffeeSpecialty(Coffee coffee) {
 }
 
 ````
-
-## <a id="funcoes" />Funções
+###### <a href="#summary">voltar sumário</a>
+## <a id="funcoes">Funções</a>
 
 Uma **função** deve fazer **uma coisa**, somente uma, e **faze-la bem!** 
 
@@ -248,8 +251,8 @@ c.takePhoto();
 **Evitar ao máximo Switch**, ele cria dependências fortes, tentou **polimorfismo ou abstract factory**, tente primeiro, pense mais um pouco e se usá-lo for realmente necessário **use somente em classe baixo nível** e que esse switch **nunca se repita** em outro ponto do código
 
 **Não se repita** (DRI, don't repeat yourself) essa regra é fácil se está usando **CTRL + C e CTRL** + V algo de errado **não está certo**! Está ferindo algum ou muitos princípios, não possua métodos ou classes que fazem as mesmas coisas e coisas muito parecidas!
-
-## <a id="comentarios"/> Comentários
+###### <a href="#summary">voltar sumário</a>
+## <a id="comentarios"> Comentários</a>
 
  Comentários devem ser **coisas raras** em seu código, **seu comentário, é o próprio código!**
 
@@ -303,7 +306,9 @@ Comentários precisam ser **bem posicionados**, se existe um comentário sobre u
 
 **Comentários //TODO** servem por um propósito de revisão de código ou de uma tarefa que será realizada em um curto período de tempo, você, como um bom profissional **nunca deveria submeter código com um TODO**
 
-## <a id="formatacao"/>Formatação
+###### <a href="#summary">voltar sumário</a>
+
+## <a id="formatacao">Formatação</a>
 
 **Todos** no time devem seguir a mesma formatação, não importa se concorda ou não depois de estabelecido pelo time **siga a formatação!**
 
@@ -331,6 +336,123 @@ Fazer seu **código legível é mais importante do que do que código que funcio
 
 Tente **evitar get e set**, use **peça não pergunte (tell don't ask)**, aumenta a coesão do seu programa.
 
+###### <a href="#summary">voltar sumário</a>
+
+## <a id="objetosestrutura"> Objetos e Estrutura de Dados </a>
+
 - **Não confunda classe com estrutura de dados**:
 	- Estrutura de dados tem variáveis públicas mas sem funções de negócio
 	- Classes tem variáveis privadas e métodos públicos 
+
+
+**Objetos esconde dados e expõe funções**
+
+**Estrutura de dados expõe dados e esconde funções**
+
+**Estruturas** se dão bem com **adicionar funções** mas não com **adicionar novos tipos**
+
+**Objetos** se dão bem em **adicionar novos tipos** mas **não com funções** 
+
+Ou seja:,
+
+**Objetos expõe comportamento e esconde dados, isso facilita criação de outros tipos de objetos com o mesmo comportamento e dificulta alterar comportamento nos tipo existentes**
+
+**Estrutura de dados expõe dados e não possui comportamento significativo o que facilita alterar comportamento das estruturas existentes mas dificulta adicionar novos tipos aos comportamentos existentes**
+
+
+### <a href="https://pt.wikipedia.org/wiki/Lei_de_Demeter" target="_blank">Lei de Demeter</a> 
+**Uma classe não deve expor sua estrutura interna e nem conhecer outras**
+
+
+Evitar acidentes de trem (Train Wrecks):
+a().b().c()
+
+**Evitar esses get e set** para não criar dependência
+
+**Errado:**
+```
+User user = UserService.getUser();
+user.authenticate();
+
+```
+Certo:
+```
+UserSerice.authenticate();
+```
+> Peça, não pergunte. A responsabilidade de saber como autenticar um usuário deve ser apenas da classe que conhece o usuário
+
+**Interfaces ajudam a esconder a implementação** 
+
+**Evite criar híbrido**, ou é um objeto ou é uma estrutura de dados
+
+**Use DTOs (Data Transfer Objects) para transformar estrutura de dados em objetos**, por exemplo de Banco de dados ou de comunicação socket, api etc.
+
+**Registro ativo (Active record)** é um dto com finalidade de salvar (save) e de buscar (find) mas ainda não são objetos 
+
+A lei de Demeter nao se aplica para estrutura de dados
+
+Lembrando que podemos **solucionar** esses problemas com o **Peça, não pergunte** (Tell, don't ask)
+
+###### <a href="#summary">voltar sumário</a>
+
+## <a id="tratamentoerro"> Tratamento de Erros </a>
+
+**Use Exceções ao invés de códigos de retorno**, códigos de retorno se tornam desatualizados ou mentirosos
+
+**Try-catch-finally** é a primeira coisa em um método e possui uma ou duas linhas em cada bloco, extraia em outros métodos
+
+**Errado:**
+```
+private void wrong() {
+	
+	try {
+		x.anything = doOtherThing();
+		logger.log("Hey");
+		if (x.isThis()) { 
+			doOther();
+		}
+		doSomething();
+		logger.log("Hey");
+	} catch (IllegalArgumentException | NullPointerException ex) {
+		logger.error("Hey");
+		if(x.some()){
+			doOnError();
+		}
+	} finally {
+		...
+	}
+}
+```
+
+**Certo:**
+```
+private void right() {
+	try {
+		tryRight();
+	} catch (SomeCustomException ex) {
+		doOnError();
+	} finally {
+		...
+	}
+}
+
+private void tryRight() {
+	x = getSomething();
+	x.anything = doOtherThing();
+	logger.log("Hey");
+	....
+}
+
+private void doOnError() {
+	....
+}
+```
+**Envie junto com a exceção uma mensagem coerente**
+
+**Crie abstrações** para apis ou na entrada do programa para lançar apenas uma exceção customizada
+
+Defina um **handler para capturar exceções na saída do programa**
+
+**Cuidado com os nulos**, não retorne e nem passe, **use classes especializadas com casos especiais ou com lance exceções 
+
+###### <a href="#summary">voltar sumário</a>
