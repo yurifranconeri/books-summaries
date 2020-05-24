@@ -169,7 +169,7 @@ private boolean isCoffeeSpecialty(Coffee coffee) {
 **Coesão:** 
 - Uma classe tem algumas propriedades e quanto mais metodos manipulam essas propriedades mais coeso é o método com a classe, se um método não utiliza as propriedades ou utiliza apenas uma, ele não é coeso com a classe
 
-**Cuidado** para não ferir o Princípio da responsabilidade única (SRP), Aberto-Fechado (Open-close) e o Princípio da Inversão de Dependência (Dependency Inversion Principle)
+**Cuidado** para não ferir oPrincípio da responsabilidade única (SRP), Aberto-Fechado (Open-close) e o Princípio da Inversão de Dependência (Dependency Inversion Principle)
 
 > Não ser dependente dos detalhes de implementação e sim das abstrações
 
@@ -510,9 +510,16 @@ Um test unitário tem que ser **FIRST:**
 - Independent (Independente) 
 - Repeatable (Repetível) 
 - Self-Validating (Auto validável)
-- Timely (Feito a tempo)
+- Timely (Feito no tempo certo e que não demore)
 
-Os testes tem que ser **rápidos**, **independentes** um do outro, executáveis em qualquer **ambiente**, sempre retornar um **booleano** e sempre ser escrito **antes do código** de produção
+Os testes tem que ser **rápidos**, **independentes** um do outro, executáveis em qualquer **ambiente**, sempre retornar um **booleano** e sempre ser escrito **antes do código** de produção e que não demore para executar
+
+**Desenvolvimento orientado a testes (TDD):**
+- Escreva um teste que falhe
+- Escreva o código que faça o teste passar
+- Refatorar
+- Repita!
+
 
 ###### <a href="#summary">voltar sumário</a>
 
