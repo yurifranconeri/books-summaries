@@ -2,6 +2,7 @@
 
 - [O Código Limpo](#codigolimpo)
 - [Nomes com Significado](#nomesignificado)
+- [Classes](#classes)
 - [Funções](#funcoes)
 - [Comentários](#comentarios)
 - [Formatação](#formatacao)
@@ -9,7 +10,6 @@
 - [Tratamento de Erro](#tratamentoerro)
 - [Teste Unitário](#testeunitario)
 - [Fronteiras](#fronteiras)
-- [Classes](#classes)
 - [Sistemas](#sistemas)
 - [Conceitos Finais](#conceitos)
 
@@ -147,6 +147,34 @@ private boolean isCoffeeSpecialty(Coffee coffee) {
 
 ````
 ###### <a href="#summary">voltar sumário</a>
+## <a id="classes">Classes</a>
+**Organização das classes:**
+- Constantes primeiro 
+- Variáveis estátivas
+- Variáveis da instância 
+- Funções públicas 
+- Funções privadas 
+
+> Pode-se preferir por Função pública seguidas de seus métodos privados correlacionados e depois outra função pública, assim por diante. 
+
+**Encapsulação:** 
+
+- Variáveis e funções úteis devem ser privadas
+> Não seja fanático podemos quebrar a regra pra **melhorar os testes**
+
+**Tamanho:**
+- Classe devem ser pequenas 
+>Como medimos? Com responsabilidade, deve ter apenas uma responsabilidade!
+
+**Coesão:** 
+- Uma classe tem algumas propriedades e quanto mais metodos manipulam essas propriedades mais coeso é o método com a classe, se um método não utiliza as propriedades ou utiliza apenas uma, ele não é coeso com a classe
+
+**Cuidado** para não ferir o Princípio da responsabilidade única (SRP), Aberto-Fechado (Open-close) e o Princípio da Inversão de Dependência (Dependency Inversion Principle)
+
+> Não ser dependente dos detalhes de implementação e sim das abstrações
+
+###### <a href="#summary">voltar sumário</a>
+
 ## <a id="funcoes">Funções</a>
 
 Uma **função** deve fazer **uma coisa**, somente uma, e **faze-la bem!** 
@@ -486,4 +514,56 @@ Um test unitário tem que ser **FIRST:**
 
 Os testes tem que ser **rápidos**, **independentes** um do outro, executáveis em qualquer **ambiente**, sempre retornar um **booleano** e sempre ser escrito **antes do código** de produção
 
+###### <a href="#summary">voltar sumário</a>
+
+
+## <a id="fronteiras">Fronteiras</a>
+
+**Código nas fronteiras, vão mudar!** Devemos estar preparados pra isso então esse código precisa de uma separação, evite ter muitas referencias no código, **encapsule em classes** e use o padrão **Adapter**
+
+Use **interfaces** e **padrões** de projeto para criar fronteiras com códigos que não existem ainda
+
+Encapsular **código de terceiros** em uma **classe** para **não expor** métodos e propriedades indesejadas
+
+**Aprenda código de terceiro fazendo unit testes**, não no código de produção
+###### <a href="#summary">voltar sumário</a>
+
+## <a id="sistemas">Sistemas</a>
+
+Para um **sistema** ser considerado **limpo**:
+- Ser testável
+- Não ter código duplicado 
+- Expressar sua intenção 
+- Minimizar o número de classes e métodos 
+
+**Concorrência:** 
+- É complexo 
+- Pode estar correto agora mas com carga não 
+- Há muitos caminhos algum pode ser o errado
+- Manter o código sobre concorrência longe dos demais 
+- Encapsule e limite acesso a dados compartilhados
+- Use sincronized ou copie os dados
+- Tente usar variáveis locais 
+- Sua thread deve ter seu próprio mundo particular 
+
+> Sempre fique atento com a Concorrência do sistema, estude, teste e siga as dicas acima
+
+###### <a href="#summary">voltar sumário</a>
+
+## <a id="conceitos">Conceitos finais</a>
+Comece pelos requisitos, os testes de UAT, os dados de entrada e de saída, requisitos técnicos e não funcionais.
+
+Escreva o software engeneering guide
+
+Vá para o quadro branco, desenhe a arquitetura e o design do sistema, com padrões e princípios
+
+Escreva um código que funcione usando TDD
+
+Faça sempre um teste que quebra, arrume e refatore 
+
+Mantenha o código limpo 
+
+Se virar um monstro antes de adicionar mais feature refatore 
+
+Não tem motivo de você não tentar ter 100% de cobertura de código
 ###### <a href="#summary">voltar sumário</a>
