@@ -456,3 +456,34 @@ Defina um **handler para capturar exceções na saída do programa**
 **Cuidado com os nulos**, não retorne e nem passe, **use classes especializadas com casos especiais ou com lance exceções 
 
 ###### <a href="#summary">voltar sumário</a>
+
+## <a id="testeunitario">Teste Unitário</a>
+
+**3 regras do Teste Unitário (Unit Test):**
+
+- Não escreva código em produção até ter um teste falhando 
+
+- Você não deve escrever nada além do Unit test que quebre o código 
+
+- Você não deve escrever nada além do que o necessario para passar no teste falho 
+
+O **código dos testes** é tão **importante** quanto o de produção, **limpe-o**!
+
+O que torna seus testes limpos? **Legibilidade** 
+
+Nomenclatura deve ter um **padrão**, uma estratégia pode ser utilizar o **given-when-then**
+
+**Crie métodos** com asserts auxiliares e retire trecho de código que ofusquem ou que não não passem a melhor intenção do teste 
+
+**Tente usar apenas um Assert** em cada Unit test ou pelo menos minimizar eles ao máximo
+
+Um test unitário tem que ser **FIRST:**
+- Fast (Rápido)
+- Independent (Independente) 
+- Repeatable (Repetível) 
+- Self-Validating (Auto validável)
+- Timely (Feito a tempo)
+
+Os testes tem que ser **rápidos**, **independentes** um do outro, executáveis em qualquer **ambiente**, sempre retornar um **booleano** e sempre ser escrito **antes do código** de produção
+
+###### <a href="#summary">voltar sumário</a>
